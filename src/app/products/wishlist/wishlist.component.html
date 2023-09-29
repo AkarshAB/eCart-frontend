@@ -1,0 +1,38 @@
+<!-- wishlist with products-->
+<section class="py-5">
+  <div class="container px-4 px-lg-5 mt-5">
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+      <div class="col mb-5" *ngFor="let wish of allWishlist">
+        <div class="card shadow" style="height: 530px;">
+          <!-- Product image-->
+          <img class="card-img-top" style="width: 100%; height: 200px;" [src]="wish.image" alt="..." />
+          <!-- Product details-->
+          <div class="card-body p-4">
+            <div class="text-center">
+              <!-- Product name-->
+              <h5 class="fw-bolder">{{wish.title}}</h5>
+              <!-- Product price-->
+              ${{wish.price}}
+            </div>
+          </div>
+          <!-- Product actions-->
+          <div class="card-footer d-flex justify-content-around p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto" routerLink="view-product/{{wish.id}}"><i class="fa-solid fa-cart-shopping"></i></a></div>
+            <div class="text-center"><a (click)="deleteWishlistItem(wish.id)" class="btn btn-outline-dark mt-auto"><i class="fa-solid fa-trash"></i></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- empty Wishlist -->
+
+<div class="container text-center" *ngIf="allWishlist.length == 0">
+  <h1 class="mt-3">Your Wishlist is empty😢</h1>
+  <img src="https://i.pinimg.com/originals/b0/cb/c8/b0cbc88e808b2e5502a7282f644ae734.gif" style="width: 400px;" alt="">
+  <div class="text-center">
+  <button class="btn btn-dark mb-3">Shop More</button>
+  </div>
+</div>
